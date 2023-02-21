@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
 import { Stack } from 'react-bootstrap'
-import { BsLinkedin, BsGithub, BsGlobe } from 'react-icons/bs'
-import { GiGraduateCap } from 'react-icons/gi'
-import { HiLocationMarker, HiOfficeBuilding, HiOutlineMail, HiPhone } from 'react-icons/hi'
+import {BsLinkedin,BsGithub,BsGlobe} from 'react-icons/bs'
+import {GiGraduateCap} from 'react-icons/gi'
+import {HiLocationMarker,HiOfficeBuilding,HiOutlineMail,HiPhone} from 'react-icons/hi'
 import jsPDF from 'jspdf';
 import html2canvas from "html2canvas";
 
@@ -19,8 +19,8 @@ function PdfComponent() {
   const educationList = useSelector(state => state.educationList)
   const skills = useSelector(state => state.skills)
 
-
-
+ 
+  
   const printDocument = () => {
     const input = document.getElementById('divToPrint');
     html2canvas(input)
@@ -31,63 +31,63 @@ function PdfComponent() {
         // pdf.output('dataurlnewwindow');
         pdf.save("download.pdf");
       })
-      ;
+    ;
   };
 
   const GetIcon = (icon) => {
-    switch (icon.icon) {
-      case "HiOutlineMail":
-        return <HiOutlineMail size={30} />
-      case "HiPhone":
-        return <HiPhone size={30} />
-      case "BsLinkedin":
-        return <BsLinkedin size={30} />
-      case "BsGithub":
-        return <BsGithub size={30} />
-      case "BsGlobe":
-        return <BsGlobe size={30} />
-      default:
-        return "●"
+    switch(icon.icon){
+        case "HiOutlineMail":
+          return <HiOutlineMail size={30}/>
+        case "HiPhone":
+          return <HiPhone size={30}/>
+        case "BsLinkedin":
+          return <BsLinkedin size={30}/>
+        case "BsGithub":
+          return <BsGithub size={30}/>
+        case "BsGlobe":
+          return <BsGlobe size={30}/>
+        default:
+          return "●"
     }
   }
   const GetLinks = () => {
     const list = [];
-    if (profile.email) {
+    if(profile.email){
       list.push({
-        icon: "HiOutlineMail",
+        icon:"HiOutlineMail",
         link: profile.email,
       });
     }
-    if (profile.contact) {
+    if(profile.contact){
       list.push({
-        icon: "HiPhone",
+        icon:"HiPhone",
         link: profile.contact,
       });
     }
-    if (profile.linkedin) {
+    if(profile.linkedin){
       list.push({
-        icon: "BsLinkedin",
+        icon:"BsLinkedin",
         link: profile.linkedin,
       });
     }
-    if (profile.github) {
+    if(profile.github){
       list.push({
-        icon: "BsGithub",
+        icon:"BsGithub",
         link: profile.github,
       });
     }
-    if (profile.website) {
+    if(profile.website){
       list.push({
-        icon: "BsGlobe",
+        icon:"BsGlobe",
         link: profile.website,
       });
     }
 
-    return (
-      list.map((item, id) => {
-        return (
-          <div className={id % 2 === 0 ? "d-flex aligh-items-start align-items-center bg-2 text-white p-3" : "d-flex aligh-items-start align-items-center bg-3 text-white p-3"} key={id}>
-            <p className="m-0"><GetIcon icon={item.icon} /></p><span className="mx-2"></span><p className="m-0">{item.link}</p>
+    return(
+      list.map((item,id)=>{
+        return(
+          <div className={id%2===0 ? "d-flex aligh-items-start align-items-center bg-2 text-white p-3" : "d-flex aligh-items-start align-items-center bg-3 text-white p-3"} key={id}>
+            <p className="m-0"><GetIcon icon={item.icon}/></p><span className="mx-2"></span><p className="m-0">{item.link}</p>
           </div>
         )
       })
@@ -98,7 +98,7 @@ function PdfComponent() {
   return (
     <Fragment>
       <div className="d-grid col-2 mx-auto mt-4">
-        <button className="nav-link align-middle bg-dark text-white p-2 rounded" onClick={printDocument}>Download</button>
+          <button className="nav-link align-middle bg-dark text-white p-2 rounded" onClick={printDocument}>Download</button>
       </div>
       <div className="container d-flex justify-content-center p-4">
 
@@ -114,24 +114,24 @@ function PdfComponent() {
                 <span className="font-bold m-0 firstname">{name[0]}</span>
                 <span className="font-thin m-0">{name[1]}</span>
                 <p>{profile.tagline}</p>
-                <p className="m-0"><HiOfficeBuilding size={20} /> {profile.position}</p>
-                <p><HiLocationMarker size={20} /> {profile.location}</p>
-
+                  <p className="m-0"><HiOfficeBuilding size={20}/> {profile.position}</p>
+                  <p><HiLocationMarker size={20}/> {profile.location}</p>
+                
               </Stack>
               <br></br>
-              <GetLinks />
+              <GetLinks/>
 
               <br></br>
               <Stack className="p-3">
                 <h4 className="title">Skills</h4>
                 <div className="d-flex flex-wrap">
-                  {
-                    skills.map((items, id) => {
-                      return (
-                        <p className="technology rounded" key={id}>{items}</p>
-                      )
-                    })
-                  }
+                {
+                  skills.map((items, id) => {
+                    return (
+                      <p className="technology rounded" key={id}>{items}</p>
+                    )
+                  })
+                }
                 </div>
               </Stack>
             </div>
@@ -142,7 +142,7 @@ function PdfComponent() {
               <div className="px-4 py-1">
                 <h4 className="title">About Me</h4>
                 <p className="text-break">
-                  {about}
+                    {about}
                 </p>
                 <hr></hr>
               </div>
@@ -150,13 +150,13 @@ function PdfComponent() {
               <div className="px-4">
                 <h4 className="title">Experience</h4>
                 {
-                  experienceList.map((item, id) => {
-                    return (
+                  experienceList.map((item,id)=>{
+                    return(
                       <div className="d-flex justify-content-start py-1" key={id}>
-                        <HiOfficeBuilding size={30} />
+                        <HiOfficeBuilding size={30}/>
                         <div className="px-3">
                           <h4>{item.title}</h4>
-                          <p className="m-0">{item.company} • {item.startMonth} {item.startYear} {`${item.isWorking ? " - Present" : " - " + item.endMonth + " " + item.endYear}`}</p>
+                          <p className="m-0">{item.company} • {item.startMonth} {item.startYear} {`${item.isWorking ? " - Present" : " - "+item.endMonth+" "+item.endYear }`}</p>
                           <p className="m-0">{item.location}</p>
                           <p>{item.description}</p>
                         </div>
@@ -164,17 +164,17 @@ function PdfComponent() {
                     )
                   })
                 }
-
+                
                 <hr></hr>
               </div>
 
               <div className="px-4">
                 <h4 className="title">Education</h4>
                 {
-                  educationList.map((item, id) => {
-                    return (
+                  educationList.map((item,id)=>{
+                    return(
                       <div className="d-flex justify-content-start py-1" key={id}>
-                        <GiGraduateCap size={40} />
+                        <GiGraduateCap size={40}/>
                         <div className="px-3">
                           <h4>{item.institute}</h4>
                           <p className="m-0">{item.degree} • {item.fieldOfStudy}</p>
@@ -184,8 +184,8 @@ function PdfComponent() {
                     )
                   })
                 }
-
-
+                
+                
               </div>
             </div>
 
@@ -194,7 +194,7 @@ function PdfComponent() {
         </div>
 
       </div>
-
+      
     </Fragment>
   )
 }

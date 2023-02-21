@@ -11,8 +11,7 @@ function Resume() {
   return (
     <Fragment>
 
-      <Container fluid className="p-0 top-image"><h2 className=' '
-        style={{ color: " #ffb3b3", padding: "20px", textShadow: "5px 5px 10px black" }}>Resume Builder</h2></Container>
+      <Container fluid className="p-0 top-image"></Container>
       <Container>
 
         <Profile></Profile>
